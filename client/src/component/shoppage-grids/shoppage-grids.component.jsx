@@ -3,14 +3,14 @@ import {connect } from 'react-redux';
 import ShopCollection from '../shop-collection/shop-collection.component';
 import { createStructuredSelector } from 'reselect';
 import { selectCollectionForShoppageGrid } from '../../redux/shopdata/shopdata.selector';
-import './shoppage-grids.style.scss';
+import { CollectionsOverviewContainer } from './shoppage-grids.styles';
 
 const ShoppageGrid = ({ collections}) => (
-    <div className='collections-overview'>
+    <CollectionsOverviewContainer>
       {collections.map(({ id, ...otherCollectionProps }) => (
           <ShopCollection key={id} {...otherCollectionProps} />
         ))}
-    </div>
+  </CollectionsOverviewContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
