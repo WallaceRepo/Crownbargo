@@ -1,18 +1,18 @@
 import React from 'react';
 import CatalogItem from '../catalog-item/catalog-item.component';
-import './catalog.style.scss';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import {selectCatalogSections } from '../../redux/catalog/catalog.selector';
+import { DirectoryMenuContainer } from './catalog.styles';
 
 const Catalog = ({ sections }) => 
       (
-            <div className='directory-menu'>
+        <DirectoryMenuContainer>
                 {  sections.map(({title, imageUrl, id, size, linkUrl }) => (
                   <CatalogItem title = {title } key = {id} imageUrl = { imageUrl} size = {size} linkUrl = {linkUrl} />
                   ))
                 }
-            </div>
+        </DirectoryMenuContainer>
         )
     
       const mapStateToProps = createStructuredSelector({

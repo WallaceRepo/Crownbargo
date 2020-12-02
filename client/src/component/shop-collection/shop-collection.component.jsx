@@ -1,18 +1,25 @@
 import React from 'react';
-import './shop-collection.style.scss';
 import CollectionItem from '../collection-item/collection-item.component';
+import { withRouter } from 'react-router-dom';
+import {
+  CollectionPreviewContainer,
+  TitleContainer,
+  PreviewContainer
+} from './shop-collection.styles';
 
-const ShopCollection = ({ title, items }) => (
-    <div className='shop-collection'>
-      <h1 className='title'>{title.toUpperCase()}</h1>
-      <div className='preview'>
-        {items
-          .filter((item, idx) => idx < 4)
-          .map((item) => (
-            <CollectionItem key={item.id} item = {item } />
-          ))}
-      </div>
-    </div>
-  );
+const ShopCollection =({ title, items, history, match, routeName }) => (
+  <CollectionPreviewContainer>
+    <TitleContainer onClick={() => history.push(`${match.path}/${routeName}`)}>
+      {title.toUpperCase()}
+    </TitleContainer>
+    <PreviewContainer>
+      {items
+        .filter((item, idx) => idx < 4)
+        .map(item => (
+          <CollectionItem key={item.id} item={item} />
+        ))}
+    </PreviewContainer>
+  </CollectionPreviewContainer>
+);
   
-  export default ShopCollection;
+  export default withRouter(ShopCollection);

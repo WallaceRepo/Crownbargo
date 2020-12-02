@@ -1,6 +1,6 @@
 import React from 'react';
 import Catalog from '../../component/catalog/catalog.component';
-import {HomePageContainer} from './homepage.style';
+import { HomePageContainer } from './homePage.styles';
 
 
 

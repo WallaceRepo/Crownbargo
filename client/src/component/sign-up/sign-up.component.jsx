@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
-import './sign-up.style.scss';
+import { SignUpContainer, SignUpTitle } from './sign-up.styles';
 import { signUpStart } from '../../redux/user/user-action';
 import { connect } from 'react-redux';
 
@@ -29,9 +29,9 @@ const handleChange = event => {
         setUserCredentials({ ...userCredentials, [name]: value });
     }
      return(
-            <div className='sign-up'>
-                <h2 className='title'>I do not have a account</h2>
-                <span>Sign up with your emaul and password</span>
+        <SignUpContainer>
+        <SignUpTitle>I do not have a account</SignUpTitle>
+           <span>Sign up with your email and password</span>
                 <form className='sign-up-form' onSubmit={ handleSubmit }>
                     <FormInput  type='text' name = 'displayName' value={ displayName } label = 'Display Name' required
                          onChange = { handleChange } />
@@ -47,7 +47,7 @@ const handleChange = event => {
                          
                    <CustomButton type='submit' >SIGN UP</CustomButton>
                 </form>
-            </div>
+        </SignUpContainer>  
         )
 }
 
