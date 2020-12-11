@@ -12,6 +12,7 @@ import {connect} from 'react-redux';
 import { selectCurrentUser } from './redux/user/user.selector';
 import { createStructuredSelector } from 'reselect';
 import { checkUserSession } from './redux/user/user-action';
+import ContactPage from './pages/contactPage/contactPage';
 
 const App = ({ checkUserSession, currentUser }) => {
   useEffect(() => { checkUserSession()}, [ checkUserSession]);
@@ -22,6 +23,7 @@ const App = ({ checkUserSession, currentUser }) => {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
+          <Route path='/contact' component={ContactPage }/>
           <Route exact path='/checkout' component={CheckoutPage} />
           <Route
             exact
