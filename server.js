@@ -5,12 +5,6 @@ const path = require('path');
 
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
-const CLIENT_ID = '311975875908-ke2hl1fuv7t1odrfnj16opsmj2qnc0j2.apps.googleusercontent.com';
-const CLIENT_SECRET = 'CzgRemWcvN9rPn5B7L8mqCs7';
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN = '1//04SAv6hZWN4JLCgYIARAAGAQSNwF-L9Iri1A5KOLrrBJoNLrqqLhcbfOIuGcFvm3rRz4sBq0U1OVSRYC0VnBN2mUDGTLP3IRJiPc';
-const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI)
-oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN })
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
@@ -52,6 +46,14 @@ app.post('/payment', (req, res) => {
     }
   });
 });
+
+ const CLIENT_ID = process.env.CLIENT_ID;
+ const CLIENT_SECRET = process.env.CLIENT_SECRET;
+ const REFRESH_TOKEN = process.env. REFRESH_TOKEN;
+ const REDIRECT_URI = process.env.REDIRECT_URI;
+
+const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI)
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN })
 
 app.post('/contact', (req, res) => {
 
